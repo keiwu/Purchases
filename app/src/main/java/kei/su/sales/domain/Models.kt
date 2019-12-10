@@ -1,10 +1,5 @@
 package kei.su.sales.domain
 
-import android.provider.MediaStore.Video
-
-
-
-
 /*
     Building for use locally for display UI
  */

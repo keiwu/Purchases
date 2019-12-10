@@ -1,6 +1,5 @@
 package kei.su.sales.network
 
-import android.util.Log
 import com.squareup.moshi.JsonClass
 import kei.su.sales.database.DatabaseBuilding
 import kei.su.sales.database.DatabaseSale
@@ -56,11 +55,6 @@ fun NetworkBuildingContainer.asDatabaseModel(): Array<DatabaseBuilding> {
             country = it.country)
     }.toTypedArray()
 }
-
-
-
-
-
 
 @JsonClass(generateAdapter = true)
 data class NetworkSaleContainer(val sales: List<NetworkSale>){

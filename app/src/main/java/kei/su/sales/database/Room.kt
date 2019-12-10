@@ -2,7 +2,6 @@ package kei.su.sales.database
 
 import android.content.Context
 import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import androidx.room.*
 import androidx.sqlite.db.SupportSQLiteQuery
 import androidx.room.RawQuery

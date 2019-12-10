@@ -67,11 +67,7 @@ class SaleBuildingViewModel(application: Application) : AndroidViewModel(applica
     var stateSale = buildingsRepository.stateSale
     var itemCount = buildingsRepository.itemCount
     var buildinngWithMostSale = buildingsRepository.buildingMostSale
-
-
-
-
-
+    
     val buildinglist = buildingsRepository.buildings
     val salelist = buildingsRepository.sales
     val costs = buildingsRepository.costs

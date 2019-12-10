@@ -1,7 +1,5 @@
 package kei.su.sales.database
 
-import kei.su.sales.domain.Sale
-
 fun List<CountrySale>.asDomainModel(): List<CountrySale> {
     return map {
         CountrySale(

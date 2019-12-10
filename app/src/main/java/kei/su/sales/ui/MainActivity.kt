@@ -2,30 +2,23 @@ package kei.su.sales.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import android.widget.AdapterView
 import android.widget.Spinner
-import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import kei.su.sales.R
 import kei.su.sales.adapter.CustomDropDownAdapter
-import kei.su.sales.database.CountrySale
-import kei.su.sales.database.ManufactuerSale
 import kei.su.sales.databinding.ActivityMainBinding
 import kei.su.sales.domain.Building
 import kei.su.sales.domain.Sale
 import kei.su.sales.utils.Util
 import kei.su.sales.viewmodels.SaleBuildingViewModel
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
 
 class MainActivity : AppCompatActivity() {
-
     private lateinit var binding: ActivityMainBinding
     lateinit var manuSpinner: Spinner
     lateinit var catSpinner: Spinner
@@ -108,6 +101,7 @@ class MainActivity : AppCompatActivity() {
                     var itemList = Util.createManufacturerList(sales)
                     var catList = Util.createCatList(sales)
 
+
                     var spinnerAdapter = CustomDropDownAdapter(this, itemList)
                     manuSpinner?.adapter = spinnerAdapter
 
@@ -125,7 +119,7 @@ class MainActivity : AppCompatActivity() {
                         }
                     }
 
-                var catSpinnerAdapter = CustomDropDownAdapter(this, catList)
+                var catSpinnerAdapter = CustomDropDownAdapter(this, catList.map{ it.toString() })
                 catSpinner?.adapter = catSpinnerAdapter
 
                 catSpinner?.onItemSelectedListener = object : AdapterView.OnItemSelectedListener{
@@ -145,7 +139,7 @@ class MainActivity : AppCompatActivity() {
 
 
                 var itemIdList = Util.createItemIdList(sales)
-                var itemSpinnerAdapter = CustomDropDownAdapter(this, itemIdList)
+                var itemSpinnerAdapter = CustomDropDownAdapter(this, itemIdList.map{it.toString()})
                 itemSpinner?.adapter = itemSpinnerAdapter
 
                 itemSpinner?.onItemSelectedListener = object : AdapterView.OnItemSelectedListener{

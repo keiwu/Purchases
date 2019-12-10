@@ -3,7 +3,6 @@ package kei.su.sales.database
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import kei.su.sales.domain.Building
-import kei.su.sales.domain.Sale
 
 @Entity
 data class DatabaseBuilding constructor(

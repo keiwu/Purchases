@@ -23,12 +23,15 @@ class Util{
             return itemList
         }
 
-        fun createCatList(sales: List<Sale>?): List<String> {
-            var itemList = arrayListOf<String>()
+        fun createCatList(sales: List<Sale>?): List<Int> {
+            var itemList = arrayListOf<Int>()
             for (b in sales!!){
-                if (!itemList.contains(b.item_category_id.toString()))
-                    itemList.add(b.item_category_id.toString())
+                if (!itemList.contains(b.item_category_id))
+                    itemList.add(b.item_category_id)
             }
+
+            itemList.sort()
+
             return itemList
         }
 
@@ -42,12 +45,15 @@ class Util{
 
         }
 
-        fun createItemIdList(sales: List<Sale>?): List<String> {
-            var itemList = arrayListOf<String>()
+        fun createItemIdList(sales: List<Sale>?): List<Int> {
+            var itemList = arrayListOf<Int>()
             for (b in sales!!){
-                if (!itemList.contains(b.item_id.toString()))
-                    itemList.add(b.item_id.toString())
+                if (!itemList.contains(b.item_id))
+                    itemList.add(b.item_id)
             }
+
+            itemList.sort()
+
             return itemList
 
         }

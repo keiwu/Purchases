@@ -1,6 +1,5 @@
 package kei.su.sales.repository
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Transformations
@@ -11,7 +10,6 @@ import kei.su.sales.domain.SaleItem
 import kei.su.sales.network.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
-import androidx.sqlite.db.SimpleSQLiteQuery
 import kei.su.sales.database.*
 
 
@@ -36,18 +34,12 @@ class BuildingsRepository(private val database: BuildingDatabase) {
             it.asDomainModel()
         }
 
-
     var manufacturerSale = MutableLiveData<Double> ()
     var categorySale = MutableLiveData<Double> ()
     var countrySale = MutableLiveData<Double> ()
     var stateSale = MutableLiveData<Double> ()
     var itemCount = MutableLiveData<Int> ()
     var buildingMostSale = MutableLiveData<List<BuildingSale>> ()
-
-
-
-
-
 
     fun getSaleByMan(manufacturer : String) {
         manufacturerSale.postValue(database.saleBuildingDao.getManufactuerSale(manufacturer))
@@ -100,6 +92,9 @@ class BuildingsRepository(private val database: BuildingDatabase) {
         }
     }
 
+    /*
+        Build the network sale container from retrieved data
+     */
     private fun updateNetworkSaleContainer(salelist: List<SaleItem>): NetworkSaleContainer {
         var networkSalelist = arrayListOf<NetworkSale>()
         var id = 1

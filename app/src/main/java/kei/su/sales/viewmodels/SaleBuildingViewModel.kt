@@ -1,10 +1,7 @@
 package kei.su.sales.viewmodels
 
 import android.app.Application
-import androidx.lifecycle.AndroidViewModel
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.*
 import kei.su.sales.database.getDatabase
 import kei.su.sales.repository.BuildingsRepository
 import kotlinx.coroutines.*
@@ -33,18 +30,47 @@ class SaleBuildingViewModel(application: Application) : AndroidViewModel(applica
         viewModelScope.launch {
             buildingsRepository.refreshBuildings()
             buildingsRepository.refreshSales()
+            getBuildingWithMostSale()
         }
     }
 
-    suspend fun getSaleByManufacturer(manufacturer: String) : Double{
-        var cost = buildingsRepository.getSaleByMan(manufacturer)
-        return cost
+
+    fun getSaleByManufacturer(manufacturer: String) {
+       buildingsRepository.getSaleByMan(manufacturer)
     }
 
-    suspend fun getSaleByCategory(cateId: String) : Double{
-        var cost = buildingsRepository.getSaleByCategory(cateId)
-        return cost
+    fun getSaleByCategory(cateId: String){
+        buildingsRepository.getSaleByCategory(cateId)
     }
+
+    fun getSaleByCountry(country: String){
+        buildingsRepository.getSaleByCountry(country)
+    }
+
+    fun getSaleByState(state: String){
+        buildingsRepository.getSaleByState(state)
+    }
+
+    fun getItemCountById(itemId: String){
+        buildingsRepository.getItemCount(itemId)
+    }
+
+    fun getBuildingWithMostSale(){
+        viewModelScope.launch {
+            buildingsRepository.getBuildingWithMostSale()
+        }
+    }
+
+    var manufacturerSale = buildingsRepository.manufacturerSale
+    var categorySale = buildingsRepository.categorySale
+    var countrySale = buildingsRepository.countrySale
+    var stateSale = buildingsRepository.stateSale
+    var itemCount = buildingsRepository.itemCount
+    var buildinngWithMostSale = buildingsRepository.buildingMostSale
+
+
+
+
 
     val buildinglist = buildingsRepository.buildings
     val salelist = buildingsRepository.sales

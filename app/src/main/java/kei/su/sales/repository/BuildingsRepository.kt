@@ -1,10 +1,9 @@
 package kei.su.sales.repository
 
+import android.util.Log
 import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Transformations
-import kei.su.sales.database.BuildingDatabase
-import kei.su.sales.database.CountrySale
-import kei.su.sales.database.asDomainModel
 import kei.su.sales.domain.Building
 import kei.su.sales.domain.BuildingItem
 import kei.su.sales.domain.Sale
@@ -13,7 +12,7 @@ import kei.su.sales.network.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import androidx.sqlite.db.SimpleSQLiteQuery
-
+import kei.su.sales.database.*
 
 
 class BuildingsRepository(private val database: BuildingDatabase) {
@@ -26,6 +25,7 @@ class BuildingsRepository(private val database: BuildingDatabase) {
             it.asDomainModel()
         }
 
+    //get all the rows from sales table
     val sales: LiveData<List<Sale>> =
         Transformations.map(database.saleBuildingDao.getSales()) {
             it.asDomainModel()
@@ -36,28 +36,49 @@ class BuildingsRepository(private val database: BuildingDatabase) {
             it.asDomainModel()
         }
 
-    //lateinit var manufacturerSale: LiveData<Double>
 
-    suspend fun getSaleByMan(manufacturer : String) : Double{
-        var query = SimpleSQLiteQuery(
-            "SELECT SUM(cost) as cost FROM sales WHERE manufacturer = ?",
-            arrayOf(manufacturer)
-        )
-        var manufacturerSale = database.saleBuildingDao.getSaleByManufacturer(query)
-        return manufacturerSale
+    var manufacturerSale = MutableLiveData<Double> ()
+    var categorySale = MutableLiveData<Double> ()
+    var countrySale = MutableLiveData<Double> ()
+    var stateSale = MutableLiveData<Double> ()
+    var itemCount = MutableLiveData<Int> ()
+    var buildingMostSale = MutableLiveData<List<BuildingSale>> ()
+
+
+
+
+
+
+    fun getSaleByMan(manufacturer : String) {
+        manufacturerSale.postValue(database.saleBuildingDao.getManufactuerSale(manufacturer))
     }
 
-    suspend fun getSaleByCategory(catId : String) : Double{
-        var query = SimpleSQLiteQuery(
-            "SELECT SUM(cost) as cost FROM sales WHERE item_category_id = ?",
-            arrayOf(catId)
-        )
-        var catSale = database.saleBuildingDao.getSaleByCategory(query)
-        return catSale
+    fun getSaleByCategory(catId : String){
+        categorySale.postValue(database.saleBuildingDao.getCategorySale(catId))
     }
 
-    suspend fun deleteABuilding(){
-        database.saleBuildingDao.deleteBuilding()
+    fun getSaleByCountry(country : String){
+        countrySale.postValue(database.saleBuildingDao.getCountrySale(country))
+    }
+
+    fun getSaleByState(state : String){
+        stateSale.postValue(database.saleBuildingDao.getStateSale(state))
+    }
+
+    fun getItemCount(itemId : String){
+        itemCount.postValue(database.saleBuildingDao.getItemCount(itemId))
+    }
+
+    suspend fun getBuildingWithMostSale(){
+
+
+        withContext(Dispatchers.IO) {
+            buildingMostSale.postValue(database.saleBuildingDao.getBuildingWithMostSale())
+            var temp = database.saleBuildingDao.getBuildingWithMostSale()
+            println(temp.size)
+        }
+
+
     }
 
     /**

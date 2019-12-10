@@ -31,5 +31,25 @@ class Util{
             }
             return itemList
         }
+
+        fun createStateList(buildings: List<Building>): List<String> {
+            var itemList = arrayListOf<String>()
+            for (b in buildings){
+                if (!itemList.contains(b.state))
+                    itemList.add(b.state)
+            }
+            return itemList
+
+        }
+
+        fun createItemIdList(sales: List<Sale>?): List<String> {
+            var itemList = arrayListOf<String>()
+            for (b in sales!!){
+                if (!itemList.contains(b.item_id.toString()))
+                    itemList.add(b.item_id.toString())
+            }
+            return itemList
+
+        }
     }
 }

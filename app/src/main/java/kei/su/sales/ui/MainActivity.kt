@@ -17,6 +17,9 @@ import kei.su.sales.utils.Util
 import kei.su.sales.viewmodels.SaleBuildingViewModel
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
+import java.text.SimpleDateFormat
+import java.util.*
+
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
@@ -49,6 +52,11 @@ class MainActivity : AppCompatActivity() {
         countrySpinner = binding.countrySpinner
         stateSpinner = binding.stateSpinner
         itemSpinner = binding.itemIdSpinner
+
+        val c = Calendar.getInstance().getTime()
+        val df = SimpleDateFormat("dd-MMM-yyyy")
+        val formattedDate = df.format(c)
+        binding.dateTv.setText(formattedDate)
 
         viewModel.buildinglist.observe(
             this,

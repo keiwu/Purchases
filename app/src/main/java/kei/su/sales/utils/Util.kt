@@ -55,7 +55,6 @@ class Util{
             itemList.sort()
 
             return itemList
-
         }
     }
 }

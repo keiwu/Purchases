@@ -1,0 +1,352 @@
+[
+  {
+    "building_id": 1,
+    "building_name": "Centre Eaton - Montreal",
+    "city": "Montreal",
+    "state": "Quebec",
+    "country": "Canada"
+  },
+  {
+    "building_id": 2,
+    "building_name": "Place Vertu",
+    "city": "Montreal",
+    "state": "Quebec",
+    "country": "Canada"
+  },
+  {
+    "building_id": 3,
+    "building_name": "Rockland Centre",
+    "city": "Montreal",
+    "state": "Quebec",
+    "country": "Canada"
+  },
+  {
+    "building_id": 4,
+    "building_name": "Place Ste-Foy",
+    "city": "Quebec",
+    "state": "Quebec",
+    "country": "Canada"
+  },
+  {
+    "building_id": 5,
+    "building_name": "Promenades Beauport",
+    "city": "Quebec",
+    "state": "Quebec",
+    "country": "Canada"
+  },
+  {
+    "building_id": 6,
+    "building_name": "Bayshore Shopping Centre",
+    "city": "Ottawa",
+    "state": "Ontario",
+    "country": "Canada"
+  },
+  {
+    "building_id": 7,
+    "building_name": "St. Laurent Centre",
+    "city": "Ottawa",
+    "state": "Ontario",
+    "country": "Canada"
+  },
+  {
+    "building_id": 8,
+    "building_name": "Rideau Centre",
+    "city": "Ottawa",
+    "state": "Ontario",
+    "country": "Canada"
+  },
+  {
+    "building_id": 9,
+    "building_name": "Scarborough Town Centre",
+    "city": "Toronto",
+    "state": "Ontario",
+    "country": "Canada"
+  },
+  {
+    "building_id": 10,
+    "building_name": "Eaton Centre - Toronto",
+    "city": "Toronto",
+    "state": "Ontario",
+    "country": "Canada"
+  },
+  {
+    "building_id": 11,
+    "building_name": "Sherway Gardens",
+    "city": "Toronto",
+    "state": "Ontario",
+    "country": "Canada"
+  },
+  {
+    "building_id": 12,
+    "building_name": "Stone Road Mall",
+    "city": "Guelph",
+    "state": "Ontario",
+    "country": "Canada"
+  },
+  {
+    "building_id": 13,
+    "building_name": "Pacific Centre",
+    "city": "Vancouver",
+    "state": "British Columbia",
+    "country": "Canada"
+  },
+  {
+    "building_id": 14,
+    "building_name": "Park Royal Shopping Centre",
+    "city": "Vancouver",
+    "state": "British Columbia",
+    "country": "Canada"
+  },
+  {
+    "building_id": 15,
+    "building_name": "Mayfair Shopping Centre",
+    "city": "Victoria",
+    "state": "British Columbia",
+    "country": "Canada"
+  },
+  {
+    "building_id": 16,
+    "building_name": "West Edmonton Mall",
+    "city": "Edmonton",
+    "state": "Alberta",
+    "country": "Canada"
+  },
+  {
+    "building_id": 17,
+    "building_name": "Southgate Centre",
+    "city": "Edmonton",
+    "state": "Alberta",
+    "country": "Canada"
+  },
+  {
+    "building_id": 18,
+    "building_name": "Chinook Centre",
+    "city": "Calgary",
+    "state": "Alberta",
+    "country": "Canada"
+  },
+  {
+    "building_id": 19,
+    "building_name": "CrossIron Mills",
+    "city": "Calgary",
+    "state": "Alberta",
+    "country": "Canada"
+  },
+  {
+    "building_id": 20,
+    "building_name": "Queens Place Mall",
+    "city": "New York",
+    "state": "New York",
+    "country": "United States"
+  },
+  {
+    "building_id": 21,
+    "building_name": "Manhattan Mall",
+    "city": "New York",
+    "state": "New York",
+    "country": "United States"
+  },
+  {
+    "building_id": 22,
+    "building_name": "Palisades Mall",
+    "city": "New York",
+    "state": "New York",
+    "country": "United States"
+  },
+  {
+    "building_id": 23,
+    "building_name": "Boulevard Mall",
+    "city": "Buffalo",
+    "state": "New York",
+    "country": "United States"
+  },
+  {
+    "building_id": 24,
+    "building_name": "McKinley Mall",
+    "city": "Buffalo",
+    "state": "New York",
+    "country": "United States"
+  },
+  {
+    "building_id": 25,
+    "building_name": "The Grove",
+    "city": "Los Angeles",
+    "state": "California",
+    "country": "United States"
+  },
+  {
+    "building_id": 26,
+    "building_name": "Eagle Rock Plaza",
+    "city": "Los Angeles",
+    "state": "California",
+    "country": "United States"
+  },
+  {
+    "building_id": 27,
+    "building_name": "Westfield Horton Plaza",
+    "city": "San Diego",
+    "state": "California",
+    "country": "United States"
+  },
+  {
+    "building_id": 28,
+    "building_name": "Mission Valley Center",
+    "city": "San Diego",
+    "state": "California",
+    "country": "United States"
+  },
+  {
+    "building_id": 29,
+    "building_name": "Westfield Oakridge",
+    "city": "San Jose",
+    "state": "California",
+    "country": "United States"
+  },
+  {
+    "building_id": 30,
+    "building_name": "Westgate Center",
+    "city": "San Jose",
+    "state": "California",
+    "country": "United States"
+  },
+  {
+    "building_id": 31,
+    "building_name": "NorthPoint Centre",
+    "city": "San Francisco",
+    "state": "California",
+    "country": "United States"
+  },
+  {
+    "building_id": 32,
+    "building_name": "Westlake Shopping Center",
+    "city": "San Francisco",
+    "state": "California",
+    "country": "United States"
+  },
+  {
+    "building_id": 33,
+    "building_name": "Dolphin Mall",
+    "city": "Miami",
+    "state": "Florida",
+    "country": "United States"
+  },
+  {
+    "building_id": 34,
+    "building_name": "Aventura Mall",
+    "city": "Miami",
+    "state": "Florida",
+    "country": "United States"
+  },
+  {
+    "building_id": 35,
+    "building_name": "Pointe Orlando",
+    "city": "Orlando",
+    "state": "Florida",
+    "country": "United States"
+  },
+  {
+    "building_id": 36,
+    "building_name": "The Florida Mall",
+    "city": "Orlando",
+    "state": "Florida",
+    "country": "United States"
+  },
+  {
+    "building_id": 37,
+    "building_name": "University Mall",
+    "city": "Tampa Bay",
+    "state": "Florida",
+    "country": "United States"
+  },
+  {
+    "building_id": 38,
+    "building_name": "Westfield Citrus Park",
+    "city": "Tampa Bay",
+    "state": "Florida",
+    "country": "United States"
+  },
+  {
+    "building_id": 39,
+    "building_name": "St. Johns Town Center",
+    "city": "Jacksonville",
+    "state": "Florida",
+    "country": "United States"
+  },
+  {
+    "building_id": 40,
+    "building_name": "Regency Square Mall",
+    "city": "Jacksonville",
+    "state": "Florida",
+    "country": "United States"
+  },
+  {
+    "building_id": 41,
+    "building_name": "Woodfield Mall",
+    "city": "Chicago",
+    "state": "Illinois",
+    "country": "United States"
+  },
+  {
+    "building_id": 42,
+    "building_name": "Water Tower Place",
+    "city": "Chicago",
+    "state": "Illinois",
+    "country": "United States"
+  },
+  {
+    "building_id": 43,
+    "building_name": "NorthPark Center",
+    "city": "Dallas",
+    "state": "Texas",
+    "country": "United States"
+  },
+  {
+    "building_id": 44,
+    "building_name": "Stonebriar Centre",
+    "city": "Dallas",
+    "state": "Texas",
+    "country": "United States"
+  },
+  {
+    "building_id": 45,
+    "building_name": "Willowbrook Mall",
+    "city": "Houston",
+    "state": "Texas",
+    "country": "United States"
+  },
+  {
+    "building_id": 46,
+    "building_name": "Memorial City Mall",
+    "city": "Houston",
+    "state": "Texas",
+    "country": "United States"
+  },
+  {
+    "building_id": 47,
+    "building_name": "North Star Mall",
+    "city": "San Antonio",
+    "state": "Texas",
+    "country": "United States"
+  },
+  {
+    "building_id": 48,
+    "building_name": "Rolling Oaks Mall",
+    "city": "San Antonio",
+    "state": "Texas",
+    "country": "United States"
+  },
+  {
+    "building_id": 49,
+    "building_name": "Lakeline Mall",
+    "city": "Austin",
+    "state": "Texas",
+    "country": "United States"
+  },
+  {
+    "building_id": 50,
+    "building_name": "The Domain",
+    "city": "Austin",
+    "state": "Texas",
+    "country": "United States"
+  }
+]

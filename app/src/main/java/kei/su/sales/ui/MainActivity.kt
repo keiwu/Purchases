@@ -4,9 +4,11 @@ import android.content.Intent
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.AdapterView
 import android.widget.Spinner
+import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
@@ -71,6 +73,7 @@ class MainActivity : AppCompatActivity() {
 
             // context is not around, we can safely discard this click since the Fragment is no
             // longer on the screen
+            Toast.makeText(this, it.manufacturer + " " + it.cost, Toast.LENGTH_SHORT).show()
             val packageManager = this?.packageManager ?: return@SaleClick
 
 //            // Try to generate a direct intent to the YouTube app

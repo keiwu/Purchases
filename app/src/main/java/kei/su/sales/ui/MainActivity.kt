@@ -37,6 +37,7 @@ class MainActivity : AppCompatActivity() {
     lateinit var stateSpinner: Spinner
     lateinit var itemSpinner: Spinner
     private var viewModelAdapter: ManufacturerAdapter? = null
+    lateinit var myLayoutManager: LinearLayoutManager
 
 
     /**
@@ -89,7 +90,9 @@ class MainActivity : AppCompatActivity() {
 
         binding.root.findViewById<RecyclerView>(R.id.recycler_view).apply {
             layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
+            myLayoutManager = layoutManager as LinearLayoutManager
             adapter = viewModelAdapter
+
         }
 
 
@@ -145,6 +148,8 @@ class MainActivity : AppCompatActivity() {
                     var catList = Util.createCatList(sales)
                     var distinctManufacturerSale = Util.createManufacturerSaleList(sales)
                     viewModelAdapter?.sales = distinctManufacturerSale
+                    myLayoutManager?.scrollToPosition(Integer.MAX_VALUE/2)
+
 
 
                 var spinnerAdapter = CustomDropDownAdapter(this, itemList)

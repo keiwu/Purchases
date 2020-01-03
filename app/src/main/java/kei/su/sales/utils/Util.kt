@@ -23,6 +23,19 @@ class Util{
             return itemList
         }
 
+        //Filter distinct sale list by manufacurer
+        fun createManufacturerSaleList(sales: List<Sale>?): List<Sale> {
+            var itemList = arrayListOf<String>()
+            var filteredSaleList = arrayListOf<Sale>()
+            for (b in sales!!){
+                if (!itemList.contains(b.manufacturer)) {
+                    itemList.add(b.manufacturer)
+                    filteredSaleList.add(b)
+                }
+            }
+            return filteredSaleList
+        }
+
         fun createCatList(sales: List<Sale>?): List<Int> {
             var itemList = arrayListOf<Int>()
             for (b in sales!!){

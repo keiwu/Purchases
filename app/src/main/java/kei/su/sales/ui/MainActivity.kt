@@ -1,5 +1,7 @@
 package kei.su.sales.ui
 
+import android.content.Intent
+import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
@@ -8,8 +10,12 @@ import android.widget.Spinner
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import kei.su.sales.R
 import kei.su.sales.adapter.CustomDropDownAdapter
+import kei.su.sales.adapter.ManufacturerAdapter
+import kei.su.sales.adapter.SaleClick
 import kei.su.sales.databinding.ActivityMainBinding
 import kei.su.sales.domain.Building
 import kei.su.sales.domain.Sale
@@ -28,6 +34,8 @@ class MainActivity : AppCompatActivity() {
     lateinit var countrySpinner: Spinner
     lateinit var stateSpinner: Spinner
     lateinit var itemSpinner: Spinner
+    private var viewModelAdapter: ManufacturerAdapter? = null
+
 
     /**
      * One way to delay creation of the viewModel until an appropriate lifecycle method is to use
@@ -57,6 +65,30 @@ class MainActivity : AppCompatActivity() {
         val df = SimpleDateFormat("dd-MMM-yyyy")
         val formattedDate = df.format(c)
         binding.dateTv.setText(formattedDate)
+
+        viewModelAdapter = ManufacturerAdapter(SaleClick {
+            // When a video is clicked this block or lambda will be called by DevByteAdapter
+
+            // context is not around, we can safely discard this click since the Fragment is no
+            // longer on the screen
+            val packageManager = this?.packageManager ?: return@SaleClick
+
+//            // Try to generate a direct intent to the YouTube app
+//            var intent = Intent(Intent.ACTION_VIEW, it.launchUri)
+//            if(intent.resolveActivity(packageManager) == null) {
+//                // YouTube app isn't found, use the web url
+//                intent = Intent(Intent.ACTION_VIEW, Uri.parse(it.url))
+//            }
+
+            startActivity(intent)
+        })
+
+
+        binding.root.findViewById<RecyclerView>(R.id.recycler_view).apply {
+            layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
+            adapter = viewModelAdapter
+        }
+
 
         viewModel.buildinglist.observe(
             this,
@@ -108,9 +140,11 @@ class MainActivity : AppCompatActivity() {
                     sales ->
                     var itemList = Util.createManufacturerList(sales)
                     var catList = Util.createCatList(sales)
+                    var distinctManufacturerSale = Util.createManufacturerSaleList(sales)
+                    viewModelAdapter?.sales = distinctManufacturerSale
 
 
-                    var spinnerAdapter = CustomDropDownAdapter(this, itemList)
+                var spinnerAdapter = CustomDropDownAdapter(this, itemList)
                     manuSpinner?.adapter = spinnerAdapter
 
                     manuSpinner?.onItemSelectedListener = object : AdapterView.OnItemSelectedListener{

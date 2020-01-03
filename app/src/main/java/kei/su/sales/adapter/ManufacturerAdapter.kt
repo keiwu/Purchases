@@ -41,7 +41,13 @@ class ManufacturerAdapter(val callback: SaleClick) : RecyclerView.Adapter<Manufa
         return ManufacturerViewHolder(withDataBinding)
     }
 
-    override fun getItemCount() = sales.size
+    override fun getItemCount(): Int{
+        if (sales.size > 0)
+            return Int.MAX_VALUE
+        else
+            return sales.size
+
+    }
 
     /**
      * Called by RecyclerView to display the data at the specified position. This method should
@@ -50,7 +56,7 @@ class ManufacturerAdapter(val callback: SaleClick) : RecyclerView.Adapter<Manufa
      */
     override fun onBindViewHolder(holder: ManufacturerViewHolder, position: Int) {
         holder.viewDataBinding.also {
-            it.sale = sales[position]
+            it.sale = sales[position%sales.size]
             it.manufacturerCallback = callback
         }
     }

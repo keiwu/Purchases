@@ -8,13 +8,13 @@ import com.google.gson.annotations.SerializedName
 class HotProduct{
 	@SerializedName("product_category_id")
 	@Expose
-	private val productCategoryId: Any? = null
+	val productCategoryId: Any? = null
 	@SerializedName("hot_lists")
 	@Expose
 	private val hotLists: List<HotList>? = null
 	@SerializedName("id")
 	@Expose
-	private val id: String? = null
+	val id: String? = null
 	@SerializedName("document_type")
 	@Expose
 	private val documentType: String? = null

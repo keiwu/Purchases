@@ -1,5 +1,6 @@
 package kei.su.sales.repository
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Transformations
@@ -78,6 +79,8 @@ class BuildingsRepository(private val database: BuildingDatabase) {
      */
     suspend fun refreshBuildings() {
         withContext(Dispatchers.IO) {
+//            val hotlist = Network.repo.getHotList().await()
+//            Log.d("hotlist", hotlist.id.toString())
             val buildinglist = Network.repo.getBuildinglist().await()
             var networkBuildingContainer = updateNetworkBuildingContainer(buildinglist)
             database.saleBuildingDao.insertAll(*networkBuildingContainer.asDatabaseModel())
@@ -91,6 +94,7 @@ class BuildingsRepository(private val database: BuildingDatabase) {
             database.saleBuildingDao.insertAllSale(*networkSaleContainer.asDatabaseModel())
         }
     }
+
 
     /*
         Build the network sale container from retrieved data

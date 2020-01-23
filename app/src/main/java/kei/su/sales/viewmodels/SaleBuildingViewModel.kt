@@ -29,8 +29,8 @@ class SaleBuildingViewModel(application: Application) : AndroidViewModel(applica
     init {
         viewModelScope.launch {
             buildingsRepository.refreshBuildings()
-            buildingsRepository.refreshSales()
-            getBuildingWithMostSale()
+//            buildingsRepository.refreshSales()
+//            getBuildingWithMostSale()
         }
     }
 

@@ -7,7 +7,9 @@ import kotlinx.coroutines.Deferred
 import retrofit2.Retrofit
 import retrofit2.http.GET
 import kei.su.sales.domain.BuildingItem
+import kei.su.sales.domain.HotProduct
 import kei.su.sales.domain.SaleItem
+import retrofit2.Call
 import retrofit2.converter.gson.GsonConverterFactory
 
 
@@ -20,6 +22,11 @@ interface RepositoryService {
 
     @GET("GetAnalyticData")
     fun getSalelist(): Deferred<List<SaleItem>>
+
+    @GET("setting/hotlist")
+    fun getHotList(): Deferred<HotProduct>
+
+
 }
 
 /**
@@ -36,7 +43,8 @@ private val moshi = Moshi.Builder()
 object Network {
     // Configure retrofit to parse JSON and use coroutines
     private val retrofit = Retrofit.Builder()
-        .baseUrl("http://positioning-test.mapsted.com/api/Values/")
+        //.baseUrl("http://positioning-test.mapsted.com/api/Values/")
+        .baseUrl("https://az01d-coreapi-apim.azure-api.net/settings/v1/")
         //.addConverterFactory(MoshiConverterFactory.create(moshi))
         .addConverterFactory(GsonConverterFactory.create())
         .addCallAdapterFactory(CoroutineCallAdapterFactory())

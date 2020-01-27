@@ -12,6 +12,10 @@ import kei.su.sales.network.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import kei.su.sales.database.*
+import retrofit2.Callback
+
+import retrofit2.Call
+import retrofit2.Response
 
 
 class BuildingsRepository(private val database: BuildingDatabase) {
@@ -81,10 +85,33 @@ class BuildingsRepository(private val database: BuildingDatabase) {
         withContext(Dispatchers.IO) {
 //            val hotlist = Network.repo.getHotList().await()
 //            Log.d("hotlist", hotlist.id.toString())
-            val repo = Network.repo
-            val buildinglist = repo.getBuildinglist().await()
-            var networkBuildingContainer = updateNetworkBuildingContainer(buildinglist)
-            database.saleBuildingDao.insertAll(*networkBuildingContainer.asDatabaseModel())
+            val repoApi = Network.repo
+            val call = repoApi.getBuildinglist()
+
+            //call.enqueue(Callback<List<BuildingItem>>)
+
+            call.enqueue(object : Callback<List<BuildingItem>> {
+                override fun onResponse(call: Call<List<BuildingItem>>, response: Response<List<BuildingItem>>) {
+
+                    if (!response.isSuccessful()) {
+                        return
+                    }
+
+                    val buildings = response.body()
+                    Log.d("buildingsResult", "buildings size " + buildings!!.size)
+
+
+                }
+
+                override fun onFailure(call: Call<List<BuildingItem>>, t: Throwable) {
+                    println("fail to get result")
+                }
+            })
+
+
+//            val buildinglist = repo.getBuildinglist().await()
+//            var networkBuildingContainer = updateNetworkBuildingContainer(buildinglist)
+//            database.saleBuildingDao.insertAll(*networkBuildingContainer.asDatabaseModel())
         }
     }
 

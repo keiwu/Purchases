@@ -17,8 +17,11 @@ import retrofit2.converter.gson.GsonConverterFactory
  * A retrofit service to fetch a devbyte playlist.
  */
 interface RepositoryService {
+//    @GET("GetBuildingData")
+//    fun getBuildinglist(): Deferred<List<BuildingItem>>
+
     @GET("GetBuildingData")
-    fun getBuildinglist(): Deferred<List<BuildingItem>>
+    fun getBuildinglist(): Call<List<BuildingItem>>
 
     @GET("GetAnalyticData")
     fun getSalelist(): Deferred<List<SaleItem>>

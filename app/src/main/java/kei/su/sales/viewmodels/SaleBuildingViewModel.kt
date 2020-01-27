@@ -16,7 +16,7 @@ class SaleBuildingViewModel(application: Application) : AndroidViewModel(applica
      *
      * Cancelling this job will cancel all coroutines started by this ViewModel.
      */
-    private val viewModelJob = SupervisorJob()
+    private val viewModelJob = Job()
 
     /**
      * This is the main scope for all coroutines launched by MainViewModel.
@@ -34,18 +34,16 @@ class SaleBuildingViewModel(application: Application) : AndroidViewModel(applica
      * init{} is called immediately when this ViewModel is created.
      */
     init {
-        viewModelScope.launch() {
-//            buildingsRepository.refreshBuildings()
+        viewModelScope.async() {
+            buildingsRepository.refreshBuildings()
 //            buildingsRepository.refreshSales()
 //            getBuildingWithMostSale()
-            val newsRepo = NewsRepo(NewsApiService.newsApi)
+//            val newsRepo = NewsRepo(NewsApiService.newsApi)
+//
+//
+//            val buildingList = newsRepo.getBuildingList()
+//            Log.d("buildinglist", "buildinglist size $buildingList.size")
 
-            try {
-                val buildingList = newsRepo.getBuildingList()
-                Log.d("buildinglist", "buildinglist size $buildingList.size")
-            } catch (e: Exception){
-                println("Caught exception: $e")
-            }
 
         }
     }

@@ -1,9 +1,12 @@
 package kei.su.sales.viewmodels
 
 import android.app.Application
+import android.util.Log
 import androidx.lifecycle.*
 import kei.su.sales.database.getDatabase
+import kei.su.sales.network.NewsApiService
 import kei.su.sales.repository.BuildingsRepository
+import khalid.com.newssearcherv4.repositories.NewsRepo
 import kotlinx.coroutines.*
 
 class SaleBuildingViewModel(application: Application) : AndroidViewModel(application) {
@@ -22,15 +25,28 @@ class SaleBuildingViewModel(application: Application) : AndroidViewModel(applica
 
     private val database = getDatabase(application)
     val buildingsRepository = BuildingsRepository(database)
+    val handler = CoroutineExceptionHandler { _, exception ->
+        //Handle your exception
+        println("Caught an exception: $exception")
+    }
 
     /**
      * init{} is called immediately when this ViewModel is created.
      */
     init {
-        viewModelScope.launch {
-            buildingsRepository.refreshBuildings()
+        viewModelScope.launch() {
+//            buildingsRepository.refreshBuildings()
 //            buildingsRepository.refreshSales()
 //            getBuildingWithMostSale()
+            val newsRepo = NewsRepo(NewsApiService.newsApi)
+
+            try {
+                val buildingList = newsRepo.getBuildingList()
+                Log.d("buildinglist", "buildinglist size $buildingList.size")
+            } catch (e: Exception){
+                println("Caught exception: $e")
+            }
+
         }
     }
 

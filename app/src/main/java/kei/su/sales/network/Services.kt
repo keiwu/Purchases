@@ -43,8 +43,8 @@ private val moshi = Moshi.Builder()
 object Network {
     // Configure retrofit to parse JSON and use coroutines
     private val retrofit = Retrofit.Builder()
-        //.baseUrl("http://positioning-test.mapsted.com/api/Values/")
-        .baseUrl("https://az01d-coreapi-apim.azure-api.net/settings/v1/")
+        .baseUrl("http://positioning-test.mapsted.com/api/Values/")
+        //.baseUrl("https://az01d-coreapi-apim.azure-api.net/settings/v1/")
         //.addConverterFactory(MoshiConverterFactory.create(moshi))
         .addConverterFactory(GsonConverterFactory.create())
         .addCallAdapterFactory(CoroutineCallAdapterFactory())

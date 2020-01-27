@@ -81,7 +81,8 @@ class BuildingsRepository(private val database: BuildingDatabase) {
         withContext(Dispatchers.IO) {
 //            val hotlist = Network.repo.getHotList().await()
 //            Log.d("hotlist", hotlist.id.toString())
-            val buildinglist = Network.repo.getBuildinglist().await()
+            val repo = Network.repo
+            val buildinglist = repo.getBuildinglist().await()
             var networkBuildingContainer = updateNetworkBuildingContainer(buildinglist)
             database.saleBuildingDao.insertAll(*networkBuildingContainer.asDatabaseModel())
         }
@@ -89,9 +90,15 @@ class BuildingsRepository(private val database: BuildingDatabase) {
 
     suspend fun refreshSales() {
         withContext(Dispatchers.IO) {
-            val salelist = Network.repo.getSalelist().await()
-            var networkSaleContainer = updateNetworkSaleContainer(salelist)
-            database.saleBuildingDao.insertAllSale(*networkSaleContainer.asDatabaseModel())
+            val repo = Network.repo
+            try {
+                val salelist = repo.getSalelist().await()
+                var networkSaleContainer = updateNetworkSaleContainer(salelist)
+                database.saleBuildingDao.insertAllSale(*networkSaleContainer.asDatabaseModel())
+            }catch (e:Exception){
+                println("caught an exception $e")
+            }
+
         }
     }
 
